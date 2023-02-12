@@ -28,3 +28,17 @@ terraform destroy
 terraform state list
 terraform show
 ```
+
+## Configure Azure blob container to store Terraform state information for security and team collaboration. First, define backend.tf. Then, follow the standard way to apply all .tf. 
+```
+az group create -l canadacentral -n tfstate<ID>RG
+az storage account create -l canadacentral -n tfstate<ID>sa -g tfstate<ID>RG --sku Standard_LRS
+az storage account keys list -g tfstate<ID>RG -n tfstate<ID>sa
+az storage container create -n tfstatefiles --account-name tfstate<ID>sa --account-key “<access-key-from-previous-step>”
+export ARM_ACCESS_KEY=<access-key-from-previous-step>
+```
+
+## Format
+```
+terraform fmt -recursive
+```
