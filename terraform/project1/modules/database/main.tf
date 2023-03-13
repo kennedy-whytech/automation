@@ -3,7 +3,6 @@ resource "azurerm_postgresql_server" "pg_db" {
   location            = var.rg_location
   resource_group_name = var.rg_name
 
-
   sku_name                     = var.sku_name
   storage_mb                   = var.storage_mb
   backup_retention_days        = var.backup_retention_days
@@ -14,9 +13,7 @@ resource "azurerm_postgresql_server" "pg_db" {
   administrator_login_password = var.administrator_login_password
   version                      = var.db_version
   ssl_enforcement_enabled      = var.auto_grow_enabled
-
-
-
+  
   tags = local.common_tags
 }
 

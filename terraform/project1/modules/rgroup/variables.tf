@@ -4,7 +4,6 @@ locals {
   common_tags = var.common_tags
 }
 
-
 variable "rg1_name" {
   type = string
 }

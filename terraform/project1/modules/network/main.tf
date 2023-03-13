@@ -17,6 +17,7 @@ resource "azurerm_network_security_group" "network-nsg1" {
   location            = var.rg_location
   resource_group_name = var.rg_name
 
+# Not required, but it's safer to add them
   security_rule {
     name                       = "rule1"
     priority                   = 100
@@ -47,6 +48,17 @@ resource "azurerm_network_security_group" "network-nsg1" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "5985"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+    security_rule {
+    name                       = "rule4"
+    priority                   = 400
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }

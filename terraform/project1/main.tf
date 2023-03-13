@@ -10,6 +10,7 @@ locals {
 
 module "rgroup" {
   source = "./modules/rgroup"
+
   # often chaning var
   rg1_name     = "${local.humber_id}-assignment1-RG"
   rg1_location = "canadaeast"
@@ -20,6 +21,7 @@ module "rgroup" {
 
 module "network" {
   source = "./modules/network"
+
   # sibling modules
   rg_name     = module.rgroup.rg1_name
   rg_location = module.rgroup.rg1_location
@@ -34,6 +36,7 @@ module "network" {
 
 module "common" {
   source = "./modules/common"
+
   # sibling modules
   rg_name     = module.rgroup.rg1_name
   rg_location = module.rgroup.rg1_location
@@ -68,24 +71,18 @@ module "linux" {
     disk_size            = 32
     caching              = "ReadWrite"
   }
-
   ubuntu_lvm_os_info = {
     publisher = "OpenLogic"
     offer     = "CentOS"
     sku       = "8_2"
     version   = "latest"
   }
-
   lvm_as1 = {
     name                         = "${local.humber_id}-lvm-as1"
     platform_fault_domain_count  = 2
     platform_update_domain_count = 5
   }
-
   nb_count = 2
-
-
-
   # local
   common_tags = local.common_tags
 
