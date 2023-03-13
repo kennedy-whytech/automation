@@ -1,0 +1,35 @@
+output "wvm_ids" {
+  value = values(azurerm_windows_virtual_machine.wvm)[*].id
+}
+
+output "wvm_names" {
+  value = values(azurerm_windows_virtual_machine.wvm)[*].name
+}
+
+output "wvm_hostnames" {
+  value = values(azurerm_windows_virtual_machine.wvm)[*].computer_name
+}
+
+output "wvm_private_ips" {
+  value = values(azurerm_network_interface.wvm_nic1)[*].private_ip_address
+}
+
+output "wvm_public_ips" {
+  value = values(azurerm_windows_virtual_machine.wvm)[*].public_ip_address
+}
+
+output "wvm_availability_set_name" {
+  value = azurerm_availability_set.wvm_as1.name
+}
+
+output "wvm_dns_label" {
+  value = values(azurerm_public_ip.wvm_pip)[*].domain_name_label
+}
+
+output "wvm_fqdn" {
+  value = values(azurerm_public_ip.wvm_pip)[*].fqdn
+}
+
+output "wvm_obj" {
+  value = azurerm_windows_virtual_machine.wvm[*]
+}

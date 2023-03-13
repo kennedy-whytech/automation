@@ -42,3 +42,9 @@ export ARM_ACCESS_KEY=<access-key-from-previous-step>
 ```
 terraform fmt -recursive
 ```
+
+## Checking for available images
+```
+az vm image list >> images
+az vm image list --offer CentOS --all
+```
