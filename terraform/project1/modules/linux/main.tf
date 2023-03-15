@@ -49,10 +49,10 @@ resource "azurerm_linux_virtual_machine" "lvm" {
   disable_password_authentication = true
 
   source_image_reference {
-    publisher = var.ubuntu_lvm_os_info.publisher
-    offer     = var.ubuntu_lvm_os_info.offer
-    sku       = var.ubuntu_lvm_os_info.sku
-    version   = var.ubuntu_lvm_os_info.version
+    publisher = var.lvm_os_info.publisher
+    offer     = var.lvm_os_info.offer
+    sku       = var.lvm_os_info.sku
+    version   = var.lvm_os_info.version
   }
 
   boot_diagnostics {

@@ -71,7 +71,7 @@ module "linux" {
     disk_size            = 32
     caching              = "ReadWrite"
   }
-  ubuntu_lvm_os_info = {
+  lvm_os_info = {
     publisher = "OpenLogic"
     offer     = "CentOS"
     sku       = "8_2"

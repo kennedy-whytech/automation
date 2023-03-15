@@ -43,7 +43,7 @@ variable "os_disk_attributes" {
   })
 }
 
-variable "ubuntu_lvm_os_info" {
+variable "lvm_os_info" {
   type = object({
     publisher = string
     offer     = string
