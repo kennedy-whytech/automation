@@ -69,6 +69,12 @@ resource "azurerm_availability_set" "lvm_as1" {
   tags                         = local.common_tags
 }
 
+resource "azurerm_network_watcher" "lvm_nw" {
+  name                 = "${var.lvm_name}-nw"
+  location             = var.rg_location
+  resource_group_name  = var.rg_name
+}
+
 resource "azurerm_virtual_machine_extension" "lvm_vme" {
   count                = var.nb_count
   name                 = "${var.lvm_name}${format("%1d", count.index)}-vme"
@@ -76,4 +82,19 @@ resource "azurerm_virtual_machine_extension" "lvm_vme" {
   publisher            = "Microsoft.Azure.NetworkWatcher"
   type                 = "NetworkWatcherAgentLinux"
   type_handler_version = "1.4"
+}
+
+
+resource "azurerm_network_packet_capture" "lvm_npc" {
+  count                = var.nb_count
+  name                 = "${var.lvm_name}${format("%1d", count.index)}-npc"
+  network_watcher_name = azurerm_network_watcher.lvm_nw.name
+  resource_group_name  = var.rg_name
+  target_resource_id   = azurerm_linux_virtual_machine.lvm[count.index].id
+
+  storage_location {
+    storage_account_id = var.sa1_id
+  }
+
+  depends_on = [azurerm_virtual_machine_extension.lvm_vme]
 }

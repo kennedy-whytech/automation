@@ -62,6 +62,7 @@ module "linux" {
   rg_location         = module.rgroup.rg1_location
   subnet1_id          = module.network.subnet1_id
   storage_account_uri = module.common.sa1_primary_blob_endpoint
+  sa1_id              = module.common.sa1_obj.id
 
   # often chaning var
   lvm_name = "${local.humber_id}-c-vm"

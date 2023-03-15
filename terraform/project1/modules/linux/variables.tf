@@ -71,3 +71,7 @@ variable "subnet1_id" {
 variable "storage_account_uri" {
   type = string
 }
+
+variable "sa1_id" {
+  type = string
+}
