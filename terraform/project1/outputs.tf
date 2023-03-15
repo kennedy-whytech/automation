@@ -88,6 +88,11 @@ output "lb_names" {
   value = module.loadbalancer.lb_name
 }
 
+output "lb_pip" {
+  value = module.loadbalancer.lb_pip
+}
+
+
 # DB
 output "pg_db_name" {
   value = module.database.pg_db_name

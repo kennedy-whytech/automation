@@ -10,7 +10,16 @@ resource "null_resource" "display_hostnames" {
 
   provisioner "remote-exec" {
     inline = [
-      "echo 'The hostname of this VM is: ' $(hostname)"
+      "echo 'The hostname of this VM is: ' $(hostname)",
+      # "sudo yum update -y",
+      "sudo yum install -y httpd",
+      "sudo systemctl enable httpd",
+      "sudo systemctl start httpd",
+      "sudo yum install -y firewalld",  
+      "sudo systemctl start firewalld", 
+      "sudo firewall-cmd --permanent --add-service=http",
+      "sudo firewall-cmd --permanent --add-service=https",
+      "sudo firewall-cmd --reload",
     ]
   }
 }
