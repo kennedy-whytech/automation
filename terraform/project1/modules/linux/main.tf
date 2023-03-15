@@ -70,9 +70,9 @@ resource "azurerm_availability_set" "lvm_as1" {
 }
 
 resource "azurerm_network_watcher" "lvm_nw" {
-  name                 = "${var.lvm_name}-nw"
-  location             = var.rg_location
-  resource_group_name  = var.rg_name
+  name                = "${var.lvm_name}-nw"
+  location            = var.rg_location
+  resource_group_name = var.rg_name
 }
 
 resource "azurerm_virtual_machine_extension" "lvm_vme" {

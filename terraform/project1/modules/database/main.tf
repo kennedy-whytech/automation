@@ -13,7 +13,7 @@ resource "azurerm_postgresql_server" "pg_db" {
   administrator_login_password = var.administrator_login_password
   version                      = var.db_version
   ssl_enforcement_enabled      = var.auto_grow_enabled
-  
+
   tags = local.common_tags
 }
 

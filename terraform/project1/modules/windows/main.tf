@@ -66,3 +66,21 @@ resource "azurerm_availability_set" "wvm_as1" {
   platform_update_domain_count = var.wvm_as1.platform_update_domain_count
   tags                         = local.common_tags
 }
+
+resource "azurerm_virtual_machine_extension" "wvme" {
+  for_each             = var.wvm_name
+  name                 = "${each.key}-vme-antimaleware"
+  virtual_machine_id   = azurerm_windows_virtual_machine.wvm[each.key].id
+  publisher            = "Microsoft.Azure.Security"
+  type                 = "IaaSAntimalware"
+  type_handler_version = "1.5"
+
+  settings = <<SETTINGS
+ {
+  "AntimalwareEnabled": true
+ }
+SETTINGS
+
+
+  tags = local.common_tags
+}

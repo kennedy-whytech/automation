@@ -3,7 +3,7 @@ resource "azurerm_public_ip" "lb_pip" {
   location            = var.rg_location
   resource_group_name = var.rg_name
   allocation_method   = "Static"
-  sku                 = var.lb_sku # it has to be the same as the lb sky type
+  sku                 = var.lb_sku # it has to be the same as the lb sku type
 
 }
 

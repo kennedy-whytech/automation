@@ -139,8 +139,8 @@ module "datadisk" {
   # sibling modules
   rg_name     = module.rgroup.rg1_name
   rg_location = module.rgroup.rg1_location
-  vm_ids   = concat(module.linux.lvm_ids, module.windows.wvm_ids)   # attach managed disk to each vm
-  vm_names = concat(module.linux.lvm_names, module.windows.wvm_names)
+  vm_ids      = concat(module.linux.lvm_ids, module.windows.wvm_ids) # attach managed disk to each vm
+  vm_names    = concat(module.linux.lvm_names, module.windows.wvm_names)
   depends_on = [
     module.common.sa1_obj,
     module.linux.lvm_obj,
