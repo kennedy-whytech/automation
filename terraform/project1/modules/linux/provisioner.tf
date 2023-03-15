@@ -14,6 +14,7 @@ resource "null_resource" "display_hostnames" {
       # "sudo yum update -y",
       "sudo yum install -y httpd",
       "sudo systemctl enable httpd",
+      "sudo sh -c 'echo \"<h1>This website is hosted on $(hostname)</h1>\" > /var/www/html/index.html'",
       "sudo systemctl start httpd",
       "sudo yum install -y firewalld",  
       "sudo systemctl start firewalld", 
