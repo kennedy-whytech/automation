@@ -1,0 +1,14 @@
+---
+- name: Capture and display Ansible facts
+  hosts: n01538887-w-vm1
+  gather_facts: yes
+  tasks:
+    - name: Display all facts
+      debug:
+        var: ansible_facts
+    - name: Display only FQDN, IPv4 address, and short hostname
+      debug:
+        msg: >
+          FQDN: {{ ansible_facts['fqdn'] }}, 
+          IPv4: {{ ansible_facts['interfaces'][0]['ipv4']['address'] }}, 
+          Hostname: {{ ansible_facts['hostname'] }}

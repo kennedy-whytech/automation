@@ -1,0 +1,12 @@
+---
+- name: Create user accounts
+  hosts: linux
+  become: true
+
+  tasks:
+    - name: Create user accounts
+      user:
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        state: present
+      loop: "{{ users }}"

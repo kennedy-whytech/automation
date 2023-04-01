@@ -1,0 +1,28 @@
+---
+- name: Install Apache and MariaDB and start services
+  hosts: n01538887-c-vm2
+  become: true
+
+  tasks:
+    - name: Install Apache and MariaDB
+      yum:
+        name:
+          - httpd
+          - mariadb-server
+        state: present
+      notify: 
+        - restart_apache
+        - restart_mariadb
+
+  handlers:
+    - name: restart_apache
+      systemd:
+        name: httpd
+        state: restarted
+        enabled: yes
+
+    - name: restart_mariadb
+      systemd:
+        name: mariadb
+        state: restarted
+        enabled: yes

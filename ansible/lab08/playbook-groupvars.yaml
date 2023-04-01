@@ -1,0 +1,9 @@
+- name: Install ypserv package
+  hosts: linux
+  become: yes
+
+  tasks:
+  - name: Install ypserv package
+    yum:
+      name: "{{ package }}"
+      state: present

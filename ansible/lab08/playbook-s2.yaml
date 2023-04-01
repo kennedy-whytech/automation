@@ -1,0 +1,36 @@
+- name: Create groups and users on n01538887-c-vm1
+  hosts: n01538887-c-vm1
+  become: yes
+
+  vars:
+    grouplist1: group10
+    grouplist2: group20
+    userlist1: user10
+    userlist2: user20
+
+  tasks:
+  - name: Create group10
+    group:
+      name: "{{ grouplist1 }}"
+      state: present
+
+  - name: Create group20
+    group:
+      name: "{{ grouplist2 }}"
+      state: present
+
+  - name: Create user10 with UID 1800 and supplementary membership to group10
+    user:
+      name: "{{ userlist1 }}"
+      uid: 1800
+      groups: "{{ grouplist1 }}"
+      state: present
+
+  - name: Create user20 with UID 1900, shell /bin/bash, and home directory under /home
+    user:
+      name: "{{ userlist2 }}"
+      uid: 1900
+      groups: "{{ grouplist2 }}"
+      shell: /bin/bash
+      createhome: yes
+      state: present

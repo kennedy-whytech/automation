@@ -1,0 +1,9 @@
+---
+- name: Install cifs-utils package
+  hosts: linux
+  become: true
+  tasks:
+    - name: Use yum module to install cifs-utils package
+      yum:
+        name: cifs-utils
+        state: present

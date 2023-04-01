@@ -1,0 +1,15 @@
+---
+- name: Install packages if / has enough free space
+  hosts: n01538887-c-vm2
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: Check disk space on / and install required packages
+      yum:
+        name: "{{ packages }}"
+        state: latest
+      when:
+        - item.mount == '/'
+        - item.size_available >= 2000000000
+      loop: "{{ ansible_mounts }}"

@@ -1,0 +1,17 @@
+---
+- name: Check for hosts with humber_id
+  hosts: linux
+  gather_facts: false
+  vars:
+    humber_id: n01538887
+
+  tasks:
+    - name: Get hostnames
+      command: hostname
+      register: result
+
+    - name: Check if hostname has humber_id
+      debug:
+        msg: >
+          Node {{ result['stdout']  }} has humber_id {{ humber_id }}
+      when: result['stdout'] is search(humber_id)

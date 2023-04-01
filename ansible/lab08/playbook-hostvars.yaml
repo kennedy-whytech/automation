@@ -1,0 +1,14 @@
+- name: Install bind and evolution packages
+  hosts: n01538887-c-vm1
+  become: yes
+
+  tasks:
+  - name: Install bind package
+    yum:
+      name: "{{ bind_package }}"
+      state: present
+
+  - name: Install evolution package
+    yum:
+      name: "{{ evolution_package }}"
+      state: present

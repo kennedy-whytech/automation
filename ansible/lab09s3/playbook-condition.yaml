@@ -1,0 +1,14 @@
+---
+- name: Install nmap package if defined
+  hosts: n01538887-c-vm1
+  become: true
+  vars:
+    packages:
+      - nmap
+
+  tasks:
+    - name: Install "{{ packages }}" package
+      yum:
+        name: "{{ packages }}"
+        state: present
+      when: packages is defined

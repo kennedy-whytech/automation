@@ -1,0 +1,28 @@
+- name: Add string to file if RHEL version and kernel version match
+  hosts: linux
+  become: true
+  gather_facts: true
+  vars:
+    distribution: "CentOS"
+    distribution_version: "8.2"
+    kernel_version: 4.18.0-193.28.1.el8_2.x86_64 # "4.18.0-193.el8.x86_64" 
+    conditional_file: "/tmp/conditional"
+    string_to_add: "This is my CentOS VM"
+
+
+  tasks:
+    - name: Display all facts
+      debug:
+        var: ansible_facts
+    
+    - name: Add string to file if conditions met
+      blockinfile:
+        path: "{{ conditional_file }}"
+        block: "{{ string_to_add }}"
+        state: present
+        create: yes
+
+      when:
+        - ansible_facts['distribution'] == distribution
+        - ansible_facts['distribution_version'] == distribution_version
+        - ansible_facts['kernel'] == kernel_version

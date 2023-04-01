@@ -1,0 +1,24 @@
+---
+- name: Install Apache and configure index page
+  hosts: n01538887-c-vm1
+  become: true
+
+  tasks:
+    - name: Install Apache web server
+      package:
+        name: httpd
+        state: present
+
+    - name: Add index file
+      lineinfile:
+        path: /var/www/html/index.html
+        line: '<h1>{{ ansible_hostname }}</h1>'
+        create: yes
+      notify: restart_apache
+
+  handlers:
+    - name: restart_apache
+      systemd:
+        name: httpd
+        state: restarted
+        enabled: yes

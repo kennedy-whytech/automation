@@ -1,0 +1,38 @@
+---
+- name: Play 1 - Copy /etc/issue file and set permissions
+  hosts: n01538887-c-vm1
+  become: yes
+
+  tasks:
+  - name: Copy /etc/issue file and set permissions
+    copy:
+      src: /etc/issue
+      dest: /etc/issue
+      owner: user4000
+      group: cloudadmins
+      mode: '0444'
+      remote_src: yes
+
+- name: Play 2 - Set timezone to America/Edmonton
+  hosts: linux
+  become: yes
+
+  tasks:
+  - name: Set timezone to America/Edmonton
+    timezone:
+      name: America/Edmonton
+
+- name: Play 3 - Create devops group and user on n01538887-c-vm2
+  hosts: n01538887-c-vm2
+  become: yes
+
+  tasks:
+  - name: Create devops group
+    group:
+      name: devops
+
+  - name: Create devops1 user with UID 2500 and add to devops group
+    user:
+      name: devops1
+      uid: 2500
+      groups: devops

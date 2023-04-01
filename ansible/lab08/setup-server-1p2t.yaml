@@ -1,0 +1,24 @@
+---
+- name: Setup server
+  hosts: linux
+  become: true
+  tasks:
+    - name: Create user account user4000
+      user:
+        name: user4000
+        uid: 5000
+    - name: Create group account cloudadmins
+      group:
+        name: cloudadmins
+        gid: 3000
+    - name: Install latest Apache and Nmap packages
+      yum:
+        name: 
+          - httpd
+          - nmap
+        state: latest
+    - name: Start Apache service and enable auto-start on reboots
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
