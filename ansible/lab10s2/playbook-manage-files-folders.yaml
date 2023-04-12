@@ -1,0 +1,40 @@
+---
+- name: Manage files and folders
+  hosts: n01538887-c-vm1
+  become: yes
+  tasks:
+    - name: Create an empty file on the local machine
+      copy:
+        content: ""
+        dest: "/tmp/locfile"
+      delegate_to: localhost
+      become: no # avoid providing password of my local machine
+
+    - name: Copy locfile to the managed nodes under the /tmp directory
+      copy:
+        src: "/tmp/locfile"
+        dest: "/tmp/locfile"
+        owner: "{{ ansible_user }}"
+        group: "root"
+        mode: "0444"
+
+    - name: Set SELinux file type to etc_t on the /tmp/locfile file 
+      file:
+        path: "/tmp/locfile"
+        setype: "etc_t"
+
+    - name: Retrieve the status of the /tmp/locfile file
+      stat:
+        path: "/tmp/locfile"
+      register: locfile_stat
+
+    - name: Show locfile status
+      debug:
+        var: locfile_stat
+
+    - name: Create an empty file called emptyfile in local home directory
+      file:
+        dest: "~/emptyfile"
+        state: touch
+      delegate_to: localhost
+      become: no 

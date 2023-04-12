@@ -17,3 +17,4 @@ resource "azurerm_virtual_machine_data_disk_attachment" "vndda" {
   caching            = "ReadWrite"
   depends_on         = [azurerm_managed_disk.md]
 }
+  

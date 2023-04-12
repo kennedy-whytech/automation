@@ -1,0 +1,8 @@
+---
+- name: Handle task failures
+  hosts: linux
+  roles:
+    # - package_remove
+    # - package_install
+    # - patching
+    - profile_mgmt

@@ -1,0 +1,10 @@
+---
+- name: Run all roles in a single playbook
+  hosts: linux
+  roles:
+    - package_remove
+    - package_install
+    - patching
+    - profile_mgmt
+    - timezone
+    - syslog_updates

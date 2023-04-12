@@ -1,0 +1,7 @@
+---
+- name: Run roles in order
+  hosts: linux 
+  roles:
+    - package_remove
+    - package_install
+    - patching

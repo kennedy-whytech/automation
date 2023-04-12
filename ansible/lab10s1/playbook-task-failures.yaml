@@ -1,0 +1,28 @@
+---
+- name: Handle task failures
+  hosts: linux
+  become: yes
+  tasks:
+    - name: Perform operations on /etc/profile
+      block:
+        - name: Add TMOUT line using blockinfile
+          blockinfile:
+            path: /etc/profile
+            block: |
+              export TMOUT=900
+            marker: "# {mark} Timeout block added by Ansible"
+        
+        - name: Replace umask using lineinfile
+          lineinfile:
+            path: /etc/profile
+            regexp: '^umask.*'
+            line: 'umask 0077' # to restrict not to read/write/execute by groups/others
+      rescue:
+        - name: Add umask to ~/.bash_profile if block fails
+          lineinfile:
+            path: "~/.bash_profile"
+            line: "umask 0066" # to restrict not to read/write by groups/others
+      always:
+        - name: Display execution completion message
+          debug:
+            msg: "Playbook execution completed."

@@ -68,6 +68,18 @@ ansible --list-hosts <<group>>
 ## Ad-hoc Command
 ```
 ansible <host> -m <module> -a <arguments>
+
+```
+
+## Common playbook commands
+```
+ansible-playbook -C playbook.yml
+ansible-playbook playbook.yml --syntax-check
+ansible-playbook playbook.yml
+ansible-playbook --list-tasks playbook.yml
+ansible-playbook --list-hosts playbook.yml
+ansible-doc module_name
+
 ```
 
 ## Windows- config to run remote command via http
