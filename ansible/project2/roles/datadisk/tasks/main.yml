@@ -1,0 +1,49 @@
+---
+- name: Perform actions on partitions and create filesystems
+  block:
+    - name: Install required packages
+      package:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"
+
+    - name: Partition the data disk
+      parted:
+        device: "{{ disk_device }}"
+        number: "{{ item.number }}"
+        state: present
+        part_start: "{{ item.start }}"
+        part_end: "{{ item.end }}"
+      loop: "{{ partition_specs }}"
+
+    - name: Create filesystem on partitions
+      filesystem:
+        fstype: "{{ item.fstype }}"
+        dev: "{{ disk_device }}{{ item.number }}"
+      loop: "{{ filesystem_specs }}"
+
+    - name: Mount partitions
+      mount:
+        path: "{{ item.mount_point }}"
+        src: "{{ disk_device }}{{ item.number }}"
+        fstype: "{{ item.fstype }}"
+        state: mounted
+      loop: "{{ mount_specs }}"
+
+  rescue:
+    - name: Unmount all partitions from the disk
+      mount:
+        path: "{{ item.mount_point }}"
+        src: "{{ disk_device }}{{ item.number }}"
+        # fstype: "{{ item.fstype }}"
+        state: unmounted
+      loop: "{{ mount_specs }}"
+      ignore_errors: true
+
+    - name: Remove all partitions
+      parted:
+        device: "{{ disk_device }}"
+        number: "{{ item.number }}"
+        state: absent
+      loop: "{{ partition_specs }}"
+      ignore_errors: true

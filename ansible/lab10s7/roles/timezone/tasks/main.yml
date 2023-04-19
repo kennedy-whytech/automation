@@ -1,0 +1,5 @@
+---
+- name: Set time zone to CentOS or RedHat
+  timezone:
+    name: "{{timezone}}"
+  when: ansible_distribution in ['CentOS', 'RedHat']

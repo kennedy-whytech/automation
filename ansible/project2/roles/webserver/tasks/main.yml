@@ -1,0 +1,19 @@
+---
+- name: Install Apache
+  yum:
+    name: "{{ package_name }}"
+    state: present
+  register: apache_installation
+
+- name: Create HTML files with hostnames
+  become: false 
+  shell:
+    cmd: "echo '<html><h1>{{ inventory_hostname }} </html></h1>' > ./{{ inventory_hostname }}.html"
+  delegate_to: localhost
+
+- name: Copy the HTML files to the managed nodes
+  copy:
+    src: "./{{ inventory_hostname }}.html"
+    dest: "/var/www/html/index.html"
+    mode: '0444'
+  notify: Restart and enable Apache web server 

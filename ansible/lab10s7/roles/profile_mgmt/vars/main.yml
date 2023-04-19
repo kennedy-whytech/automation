@@ -1,0 +1,3 @@
+tmout_sec:  900
+umask_permission: 0077
+umask_permisssion_fail: 0066

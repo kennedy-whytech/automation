@@ -1,0 +1,19 @@
+---
+packages:
+  - parted
+  - xfsprogs
+  - e2fsprogs
+
+disk_device: /dev/sdc # have to go insdie the vm and double check it
+
+partition_specs: # size in GB
+  - { number: 1, start: '0%' , end: '4GiB' }
+  - { number: 2, start: '4GiB', end: '9GiB' }
+
+filesystem_specs:
+  - { number: 1, fstype: xfs }
+  - { number: 2, fstype: ext4}
+
+mount_specs:
+  - { number: 1, mount_point: /part1, fstype: xfs }
+  - { number: 2, mount_point: /part2, fstype: ext4 }

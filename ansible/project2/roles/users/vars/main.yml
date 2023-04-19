@@ -1,0 +1,7 @@
+---
+group_name: cloudadmins
+users:
+  - name: user1000
+    groups: "{{ group_name }},wheel"
+  - name: user2000
+    groups: "{{ group_name }},wheel"

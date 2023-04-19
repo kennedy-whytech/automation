@@ -1,0 +1,11 @@
+---
+- name: Configure webservers on CentOS
+  hosts: linux
+  become: yes
+  roles:
+    - datadisk
+    - system_profile
+    - users
+    - webserver
+
+

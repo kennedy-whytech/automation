@@ -1,0 +1,7 @@
+---
+- name: Update all packages on CentOS or RedHat
+  yum:
+    name: '*'
+    state: latest
+  when: ansible_distribution in ['CentOS', 'RedHat']
+  notify: reboot_handler

@@ -1,0 +1,1037 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # module.common.azurerm_log_analytics_workspace.lg_workspace[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_log_analytics_workspace" "lg_workspace" {
+      [32m+[0m [0m[1m[0mdaily_quota_gb[0m[0m                     = -1
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0minternet_ingestion_enabled[0m[0m         = true
+      [32m+[0m [0m[1m[0minternet_query_enabled[0m[0m             = true
+      [32m+[0m [0m[1m[0mlocation[0m[0m                           = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "ken8887-lg-workspace"
+      [32m+[0m [0m[1m[0mprimary_shared_key[0m[0m                 = (sensitive value)
+      [32m+[0m [0m[1m[0mreservation_capacity_in_gb_per_day[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m                = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mretention_in_days[0m[0m                  = 30
+      [32m+[0m [0m[1m[0msecondary_shared_key[0m[0m               = (sensitive value)
+      [32m+[0m [0m[1m[0msku[0m[0m                                = "PerGB2018"
+      [32m+[0m [0m[1m[0mworkspace_id[0m[0m                       = (known after apply)
+    }
+
+[1m  # module.common.azurerm_recovery_services_vault.rs_vault[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_recovery_services_vault" "rs_vault" {
+      [32m+[0m [0m[1m[0mcross_region_restore_enabled[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                     = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                         = "ken8887-rsvault"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m          = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msku[0m[0m                          = "Standard"
+      [32m+[0m [0m[1m[0msoft_delete_enabled[0m[0m          = true
+      [32m+[0m [0m[1m[0mstorage_mode_type[0m[0m            = "GeoRedundant"
+    }
+
+[1m  # module.common.azurerm_storage_account.sa1[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_storage_account" "sa1" {
+      [32m+[0m [0m[1m[0maccess_tier[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0maccount_kind[0m[0m                      = "StorageV2"
+      [32m+[0m [0m[1m[0maccount_replication_type[0m[0m          = "LRS"
+      [32m+[0m [0m[1m[0maccount_tier[0m[0m                      = "Standard"
+      [32m+[0m [0m[1m[0mallow_nested_items_to_be_public[0m[0m   = true
+      [32m+[0m [0m[1m[0menable_https_traffic_only[0m[0m         = true
+      [32m+[0m [0m[1m[0mid[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0minfrastructure_encryption_enabled[0m[0m = false
+      [32m+[0m [0m[1m[0mis_hns_enabled[0m[0m                    = false
+      [32m+[0m [0m[1m[0mlarge_file_share_enabled[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                          = "canadaeast"
+      [32m+[0m [0m[1m[0mmin_tls_version[0m[0m                   = "TLS1_2"
+      [32m+[0m [0m[1m[0mname[0m[0m                              = "ken8887sa1"
+      [32m+[0m [0m[1m[0mnfsv3_enabled[0m[0m                     = false
+      [32m+[0m [0m[1m[0mprimary_access_key[0m[0m                = (sensitive value)
+      [32m+[0m [0m[1m[0mprimary_blob_connection_string[0m[0m    = (sensitive value)
+      [32m+[0m [0m[1m[0mprimary_blob_endpoint[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_blob_host[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_connection_string[0m[0m         = (sensitive value)
+      [32m+[0m [0m[1m[0mprimary_dfs_endpoint[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_dfs_host[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_file_endpoint[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_file_host[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_location[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_queue_endpoint[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_queue_host[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_table_endpoint[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_table_host[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_web_endpoint[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_web_host[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mqueue_encryption_key_type[0m[0m         = "Service"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m               = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msecondary_access_key[0m[0m              = (sensitive value)
+      [32m+[0m [0m[1m[0msecondary_blob_connection_string[0m[0m  = (sensitive value)
+      [32m+[0m [0m[1m[0msecondary_blob_endpoint[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_blob_host[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_connection_string[0m[0m       = (sensitive value)
+      [32m+[0m [0m[1m[0msecondary_dfs_endpoint[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_dfs_host[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_file_endpoint[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_file_host[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_location[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_queue_endpoint[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_queue_host[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_table_endpoint[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_table_host[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_web_endpoint[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_web_host[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mshared_access_key_enabled[0m[0m         = true
+      [32m+[0m [0m[1m[0mtable_encryption_key_type[0m[0m         = "Service"
+
+      [32m+[0m [0mblob_properties {
+          [32m+[0m [0m[1m[0mchange_feed_enabled[0m[0m      = (known after apply)
+          [32m+[0m [0m[1m[0mdefault_service_version[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0mlast_access_time_enabled[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mversioning_enabled[0m[0m       = (known after apply)
+
+          [32m+[0m [0mcontainer_delete_retention_policy {
+              [32m+[0m [0m[1m[0mdays[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mcors_rule {
+              [32m+[0m [0m[1m[0mallowed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_methods[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_origins[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mexposed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mmax_age_in_seconds[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mdelete_retention_policy {
+              [32m+[0m [0m[1m[0mdays[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mnetwork_rules {
+          [32m+[0m [0m[1m[0mbypass[0m[0m                     = (known after apply)
+          [32m+[0m [0m[1m[0mdefault_action[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mip_rules[0m[0m                   = (known after apply)
+          [32m+[0m [0m[1m[0mvirtual_network_subnet_ids[0m[0m = (known after apply)
+
+          [32m+[0m [0mprivate_link_access {
+              [32m+[0m [0m[1m[0mendpoint_resource_id[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mendpoint_tenant_id[0m[0m   = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mqueue_properties {
+          [32m+[0m [0mcors_rule {
+              [32m+[0m [0m[1m[0mallowed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_methods[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_origins[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mexposed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mmax_age_in_seconds[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mhour_metrics {
+              [32m+[0m [0m[1m[0menabled[0m[0m               = (known after apply)
+              [32m+[0m [0m[1m[0minclude_apis[0m[0m          = (known after apply)
+              [32m+[0m [0m[1m[0mretention_policy_days[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mversion[0m[0m               = (known after apply)
+            }
+
+          [32m+[0m [0mlogging {
+              [32m+[0m [0m[1m[0mdelete[0m[0m                = (known after apply)
+              [32m+[0m [0m[1m[0mread[0m[0m                  = (known after apply)
+              [32m+[0m [0m[1m[0mretention_policy_days[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mversion[0m[0m               = (known after apply)
+              [32m+[0m [0m[1m[0mwrite[0m[0m                 = (known after apply)
+            }
+
+          [32m+[0m [0mminute_metrics {
+              [32m+[0m [0m[1m[0menabled[0m[0m               = (known after apply)
+              [32m+[0m [0m[1m[0minclude_apis[0m[0m          = (known after apply)
+              [32m+[0m [0m[1m[0mretention_policy_days[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mversion[0m[0m               = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mrouting {
+          [32m+[0m [0m[1m[0mchoice[0m[0m                      = (known after apply)
+          [32m+[0m [0m[1m[0mpublish_internet_endpoints[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0mpublish_microsoft_endpoints[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mshare_properties {
+          [32m+[0m [0mcors_rule {
+              [32m+[0m [0m[1m[0mallowed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_methods[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mallowed_origins[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mexposed_headers[0m[0m    = (known after apply)
+              [32m+[0m [0m[1m[0mmax_age_in_seconds[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0mretention_policy {
+              [32m+[0m [0m[1m[0mdays[0m[0m = (known after apply)
+            }
+
+          [32m+[0m [0msmb {
+              [32m+[0m [0m[1m[0mauthentication_types[0m[0m            = (known after apply)
+              [32m+[0m [0m[1m[0mchannel_encryption_type[0m[0m         = (known after apply)
+              [32m+[0m [0m[1m[0mkerberos_ticket_encryption_type[0m[0m = (known after apply)
+              [32m+[0m [0m[1m[0mversions[0m[0m                        = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.database.azurerm_postgresql_server.pg_db[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_postgresql_server" "pg_db" {
+      [32m+[0m [0m[1m[0madministrator_login[0m[0m              = "psqladmin"
+      [32m+[0m [0m[1m[0madministrator_login_password[0m[0m     = (sensitive value)
+      [32m+[0m [0m[1m[0mauto_grow_enabled[0m[0m                = true
+      [32m+[0m [0m[1m[0mbackup_retention_days[0m[0m            = 7
+      [32m+[0m [0m[1m[0mcreate_mode[0m[0m                      = "Default"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0mgeo_redundant_backup_enabled[0m[0m     = false
+      [32m+[0m [0m[1m[0mid[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                         = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                             = "ken8887-db"
+      [32m+[0m [0m[1m[0mpublic_network_access_enabled[0m[0m    = true
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m              = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msku_name[0m[0m                         = "B_Gen5_2"
+      [32m+[0m [0m[1m[0mssl_enforcement_enabled[0m[0m          = true
+      [32m+[0m [0m[1m[0mssl_minimal_tls_version_enforced[0m[0m = "TLS1_2"
+      [32m+[0m [0m[1m[0mstorage_mb[0m[0m                       = 5120
+      [32m+[0m [0m[1m[0mtags[0m[0m                             = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mversion[0m[0m                          = "9.5"
+    }
+
+[1m  # module.datadisk.azurerm_managed_disk.md[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_managed_disk" "md" {
+      [32m+[0m [0m[1m[0mcreate_option[0m[0m                 = "Empty"
+      [32m+[0m [0m[1m[0mdisk_iops_read_only[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_iops_read_write[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_mbps_read_only[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_mbps_read_write[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m                  = 10
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "canadaeast"
+      [32m+[0m [0m[1m[0mlogical_sector_size[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mmax_shares[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "ken8887-c-vm0-vm-disk0"
+      [32m+[0m [0m[1m[0mpublic_network_access_enabled[0m[0m = true
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msource_uri[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mstorage_account_type[0m[0m          = "Standard_LRS"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mtier[0m[0m                          = (known after apply)
+    }
+
+[1m  # module.datadisk.azurerm_managed_disk.md[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_managed_disk" "md" {
+      [32m+[0m [0m[1m[0mcreate_option[0m[0m                 = "Empty"
+      [32m+[0m [0m[1m[0mdisk_iops_read_only[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_iops_read_write[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_mbps_read_only[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_mbps_read_write[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m                  = 10
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "canadaeast"
+      [32m+[0m [0m[1m[0mlogical_sector_size[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mmax_shares[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "ken8887-c-vm1-vm-disk0"
+      [32m+[0m [0m[1m[0mpublic_network_access_enabled[0m[0m = true
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msource_uri[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mstorage_account_type[0m[0m          = "Standard_LRS"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mtier[0m[0m                          = (known after apply)
+    }
+
+[1m  # module.datadisk.azurerm_managed_disk.md[2][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_managed_disk" "md" {
+      [32m+[0m [0m[1m[0mcreate_option[0m[0m                 = "Empty"
+      [32m+[0m [0m[1m[0mdisk_iops_read_only[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_iops_read_write[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_mbps_read_only[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_mbps_read_write[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m                  = 10
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "canadaeast"
+      [32m+[0m [0m[1m[0mlogical_sector_size[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mmax_shares[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "ken8887-w-vm1-vm-disk0"
+      [32m+[0m [0m[1m[0mpublic_network_access_enabled[0m[0m = true
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msource_uri[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mstorage_account_type[0m[0m          = "Standard_LRS"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mtier[0m[0m                          = (known after apply)
+    }
+
+[1m  # module.datadisk.azurerm_virtual_machine_data_disk_attachment.vndda[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_virtual_machine_data_disk_attachment" "vndda" {
+      [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+      [32m+[0m [0m[1m[0mcreate_option[0m[0m             = "Attach"
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mlun[0m[0m                       = 10
+      [32m+[0m [0m[1m[0mmanaged_disk_id[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+    }
+
+[1m  # module.datadisk.azurerm_virtual_machine_data_disk_attachment.vndda[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_virtual_machine_data_disk_attachment" "vndda" {
+      [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+      [32m+[0m [0m[1m[0mcreate_option[0m[0m             = "Attach"
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mlun[0m[0m                       = 10
+      [32m+[0m [0m[1m[0mmanaged_disk_id[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+    }
+
+[1m  # module.datadisk.azurerm_virtual_machine_data_disk_attachment.vndda[2][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_virtual_machine_data_disk_attachment" "vndda" {
+      [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+      [32m+[0m [0m[1m[0mcreate_option[0m[0m             = "Attach"
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mlun[0m[0m                       = 10
+      [32m+[0m [0m[1m[0mmanaged_disk_id[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+    }
+
+[1m  # module.linux.azurerm_availability_set.lvm_as1[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_availability_set" "lvm_as1" {
+      [32m+[0m [0m[1m[0mid[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                     = "canadaeast"
+      [32m+[0m [0m[1m[0mmanaged[0m[0m                      = true
+      [32m+[0m [0m[1m[0mname[0m[0m                         = "ken8887-lvm-as1"
+      [32m+[0m [0m[1m[0mplatform_fault_domain_count[0m[0m  = 2
+      [32m+[0m [0m[1m[0mplatform_update_domain_count[0m[0m = 5
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m          = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mtags[0m[0m                         = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+    }
+
+[1m  # module.linux.azurerm_linux_virtual_machine.lvm[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_linux_virtual_machine" "lvm" {
+      [32m+[0m [0m[1m[0madmin_username[0m[0m                  = "n01538887"
+      [32m+[0m [0m[1m[0mallow_extension_operations[0m[0m      = true
+      [32m+[0m [0m[1m[0mavailability_set_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mcomputer_name[0m[0m                   = "ken8887-c-vm0"
+      [32m+[0m [0m[1m[0mdisable_password_authentication[0m[0m = true
+      [32m+[0m [0m[1m[0mextensions_time_budget[0m[0m          = "PT1H30M"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                        = "canadaeast"
+      [32m+[0m [0m[1m[0mmax_bid_price[0m[0m                   = -1
+      [32m+[0m [0m[1m[0mname[0m[0m                            = "ken8887-c-vm0"
+      [32m+[0m [0m[1m[0mnetwork_interface_ids[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpatch_mode[0m[0m                      = "ImageDefault"
+      [32m+[0m [0m[1m[0mplatform_fault_domain[0m[0m           = -1
+      [32m+[0m [0m[1m[0mpriority[0m[0m                        = "Regular"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprovision_vm_agent[0m[0m              = true
+      [32m+[0m [0m[1m[0mpublic_ip_address[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip_addresses[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m             = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msize[0m[0m                            = "Standard_B1s"
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m              = (known after apply)
+
+      [32m+[0m [0madmin_ssh_key {
+          [32m+[0m [0m[1m[0mpublic_key[0m[0m = <<-EOT
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7o3aD4wifKFu4EuQGYOP48AQqY3FmnkjTpQ0xrhJ6VUtpVWOGF2hcd/Wu3bIKmEfokbxmR9dFkBpMaOPbW65pP90K+WtsO5LJV/OywjwU3XjU5lPDUiFaTbv8A5RmU2y3sR7B8Dc+eLnAS9X7UYvMBRRpYtI5v3hYV81fKs3QWyOHgeyVpjpZBxDhmJOK0HhmH67RRMaaUdnus6y7qiMFd+2QXHzcCmoK72KT78zDnfaKLlzNu4STu46DpztLCWTvqaVaCeLi28OHEfimvxvwefzg3Je09/jbSKEOsb/lpRb5xI83xhui2U/wa06PtJ7pmhfEcPn42GIOGXepEDSD6vW5q4VtqAqmJPLtRSzCB2oCxmLRRBwlcvj5Xll9NQdgfszmQWwC212tE2SQfIL13geAj1uju/D2Io/mXo/NAAvaFqmWhbRa5AdaJ96aIZSVZahHzGpBzdOMqJK63jGVRNX6phGPNUqUATJ5F/+HZ5MhOTaZZ9rI9pjdqNwyFy0= kenyau@Ken-Air.local
+            EOT
+          [32m+[0m [0m[1m[0musername[0m[0m   = "n01538887"
+        }
+
+      [32m+[0m [0mboot_diagnostics {
+          [32m+[0m [0m[1m[0mstorage_account_uri[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mos_disk {
+          [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+          [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m              = 32
+          [32m+[0m [0m[1m[0mname[0m[0m                      = "ken8887-c-vm0-os-disk"
+          [32m+[0m [0m[1m[0mstorage_account_type[0m[0m      = "Premium_LRS"
+          [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+        }
+
+      [32m+[0m [0msource_image_reference {
+          [32m+[0m [0m[1m[0moffer[0m[0m     = "CentOS"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "OpenLogic"
+          [32m+[0m [0m[1m[0msku[0m[0m       = "8_2"
+          [32m+[0m [0m[1m[0mversion[0m[0m   = "latest"
+        }
+
+      [32m+[0m [0mtermination_notification {
+          [32m+[0m [0m[1m[0menabled[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtimeout[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # module.linux.azurerm_linux_virtual_machine.lvm[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_linux_virtual_machine" "lvm" {
+      [32m+[0m [0m[1m[0madmin_username[0m[0m                  = "n01538887"
+      [32m+[0m [0m[1m[0mallow_extension_operations[0m[0m      = true
+      [32m+[0m [0m[1m[0mavailability_set_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mcomputer_name[0m[0m                   = "ken8887-c-vm1"
+      [32m+[0m [0m[1m[0mdisable_password_authentication[0m[0m = true
+      [32m+[0m [0m[1m[0mextensions_time_budget[0m[0m          = "PT1H30M"
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                        = "canadaeast"
+      [32m+[0m [0m[1m[0mmax_bid_price[0m[0m                   = -1
+      [32m+[0m [0m[1m[0mname[0m[0m                            = "ken8887-c-vm1"
+      [32m+[0m [0m[1m[0mnetwork_interface_ids[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpatch_mode[0m[0m                      = "ImageDefault"
+      [32m+[0m [0m[1m[0mplatform_fault_domain[0m[0m           = -1
+      [32m+[0m [0m[1m[0mpriority[0m[0m                        = "Regular"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprovision_vm_agent[0m[0m              = true
+      [32m+[0m [0m[1m[0mpublic_ip_address[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip_addresses[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m             = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msize[0m[0m                            = "Standard_B1s"
+      [32m+[0m [0m[1m[0mtags[0m[0m                            = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m              = (known after apply)
+
+      [32m+[0m [0madmin_ssh_key {
+          [32m+[0m [0m[1m[0mpublic_key[0m[0m = <<-EOT
+                ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7o3aD4wifKFu4EuQGYOP48AQqY3FmnkjTpQ0xrhJ6VUtpVWOGF2hcd/Wu3bIKmEfokbxmR9dFkBpMaOPbW65pP90K+WtsO5LJV/OywjwU3XjU5lPDUiFaTbv8A5RmU2y3sR7B8Dc+eLnAS9X7UYvMBRRpYtI5v3hYV81fKs3QWyOHgeyVpjpZBxDhmJOK0HhmH67RRMaaUdnus6y7qiMFd+2QXHzcCmoK72KT78zDnfaKLlzNu4STu46DpztLCWTvqaVaCeLi28OHEfimvxvwefzg3Je09/jbSKEOsb/lpRb5xI83xhui2U/wa06PtJ7pmhfEcPn42GIOGXepEDSD6vW5q4VtqAqmJPLtRSzCB2oCxmLRRBwlcvj5Xll9NQdgfszmQWwC212tE2SQfIL13geAj1uju/D2Io/mXo/NAAvaFqmWhbRa5AdaJ96aIZSVZahHzGpBzdOMqJK63jGVRNX6phGPNUqUATJ5F/+HZ5MhOTaZZ9rI9pjdqNwyFy0= kenyau@Ken-Air.local
+            EOT
+          [32m+[0m [0m[1m[0musername[0m[0m   = "n01538887"
+        }
+
+      [32m+[0m [0mboot_diagnostics {
+          [32m+[0m [0m[1m[0mstorage_account_uri[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mos_disk {
+          [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+          [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m              = 32
+          [32m+[0m [0m[1m[0mname[0m[0m                      = "ken8887-c-vm1-os-disk"
+          [32m+[0m [0m[1m[0mstorage_account_type[0m[0m      = "Premium_LRS"
+          [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+        }
+
+      [32m+[0m [0msource_image_reference {
+          [32m+[0m [0m[1m[0moffer[0m[0m     = "CentOS"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "OpenLogic"
+          [32m+[0m [0m[1m[0msku[0m[0m       = "8_2"
+          [32m+[0m [0m[1m[0mversion[0m[0m   = "latest"
+        }
+
+      [32m+[0m [0mtermination_notification {
+          [32m+[0m [0m[1m[0menabled[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtimeout[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # module.linux.azurerm_network_interface.lvm_nic1[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface" "lvm_nic1" {
+      [32m+[0m [0m[1m[0mapplied_dns_servers[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdns_servers[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0menable_accelerated_networking[0m[0m = false
+      [32m+[0m [0m[1m[0menable_ip_forwarding[0m[0m          = false
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0minternal_dns_name_label[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0minternal_domain_name_suffix[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "canadaeast"
+      [32m+[0m [0m[1m[0mmac_address[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "ken8887-c-vm0-nic1"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m            = (known after apply)
+
+      [32m+[0m [0mip_configuration {
+          [32m+[0m [0m[1m[0mgateway_load_balancer_frontend_ip_configuration_id[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                                               = "ken8887-c-vm0-ipconfig1"
+          [32m+[0m [0m[1m[0mprimary[0m[0m                                            = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m                                 = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address_allocation[0m[0m                      = "Dynamic"
+          [32m+[0m [0m[1m[0mprivate_ip_address_version[0m[0m                         = "IPv4"
+          [32m+[0m [0m[1m[0mpublic_ip_address_id[0m[0m                               = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m                                          = (known after apply)
+        }
+    }
+
+[1m  # module.linux.azurerm_network_interface.lvm_nic1[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface" "lvm_nic1" {
+      [32m+[0m [0m[1m[0mapplied_dns_servers[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdns_servers[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0menable_accelerated_networking[0m[0m = false
+      [32m+[0m [0m[1m[0menable_ip_forwarding[0m[0m          = false
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0minternal_dns_name_label[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0minternal_domain_name_suffix[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "canadaeast"
+      [32m+[0m [0m[1m[0mmac_address[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "ken8887-c-vm1-nic1"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m            = (known after apply)
+
+      [32m+[0m [0mip_configuration {
+          [32m+[0m [0m[1m[0mgateway_load_balancer_frontend_ip_configuration_id[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                                               = "ken8887-c-vm1-ipconfig1"
+          [32m+[0m [0m[1m[0mprimary[0m[0m                                            = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m                                 = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address_allocation[0m[0m                      = "Dynamic"
+          [32m+[0m [0m[1m[0mprivate_ip_address_version[0m[0m                         = "IPv4"
+          [32m+[0m [0m[1m[0mpublic_ip_address_id[0m[0m                               = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m                                          = (known after apply)
+        }
+    }
+
+[1m  # module.linux.azurerm_public_ip.lvm_pip[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_public_ip" "lvm_pip" {
+      [32m+[0m [0m[1m[0mallocation_method[0m[0m       = "Dynamic"
+      [32m+[0m [0m[1m[0mdomain_name_label[0m[0m       = "ken8887-c-vm0"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m = 4
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mip_version[0m[0m              = "IPv4"
+      [32m+[0m [0m[1m[0mlocation[0m[0m                = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "ken8887-c-vm0-pip"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m     = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msku[0m[0m                     = "Basic"
+      [32m+[0m [0m[1m[0msku_tier[0m[0m                = "Regional"
+      [32m+[0m [0m[1m[0mtags[0m[0m                    = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+    }
+
+[1m  # module.linux.azurerm_public_ip.lvm_pip[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_public_ip" "lvm_pip" {
+      [32m+[0m [0m[1m[0mallocation_method[0m[0m       = "Dynamic"
+      [32m+[0m [0m[1m[0mdomain_name_label[0m[0m       = "ken8887-c-vm1"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m = 4
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mip_version[0m[0m              = "IPv4"
+      [32m+[0m [0m[1m[0mlocation[0m[0m                = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "ken8887-c-vm1-pip"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m     = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msku[0m[0m                     = "Basic"
+      [32m+[0m [0m[1m[0msku_tier[0m[0m                = "Regional"
+      [32m+[0m [0m[1m[0mtags[0m[0m                    = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+    }
+
+[1m  # module.linux.azurerm_virtual_machine_extension.lvm_vme[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_virtual_machine_extension" "lvm_vme" {
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "ken8887-c-vm0-vme"
+      [32m+[0m [0m[1m[0mpublisher[0m[0m            = "Microsoft.Azure.NetworkWatcher"
+      [32m+[0m [0m[1m[0mtype[0m[0m                 = "NetworkWatcherAgentLinux"
+      [32m+[0m [0m[1m[0mtype_handler_version[0m[0m = "1.4"
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m   = (known after apply)
+    }
+
+[1m  # module.linux.azurerm_virtual_machine_extension.lvm_vme[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_virtual_machine_extension" "lvm_vme" {
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "ken8887-c-vm1-vme"
+      [32m+[0m [0m[1m[0mpublisher[0m[0m            = "Microsoft.Azure.NetworkWatcher"
+      [32m+[0m [0m[1m[0mtype[0m[0m                 = "NetworkWatcherAgentLinux"
+      [32m+[0m [0m[1m[0mtype_handler_version[0m[0m = "1.4"
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m   = (known after apply)
+    }
+
+[1m  # module.linux.null_resource.display_hostnames[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "display_hostnames" {
+      [32m+[0m [0m[1m[0mid[0m[0m = (known after apply)
+    }
+
+[1m  # module.linux.null_resource.display_hostnames[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "display_hostnames" {
+      [32m+[0m [0m[1m[0mid[0m[0m = (known after apply)
+    }
+
+[1m  # module.loadbalancer.azurerm_lb.lb[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_lb" "lb" {
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m             = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "ken8887-public-lb"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m  = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msku[0m[0m                  = "Standard"
+      [32m+[0m [0m[1m[0msku_tier[0m[0m             = "Regional"
+
+      [32m+[0m [0mfrontend_ip_configuration {
+          [32m+[0m [0m[1m[0mgateway_load_balancer_frontend_ip_configuration_id[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mid[0m[0m                                                 = (known after apply)
+          [32m+[0m [0m[1m[0minbound_nat_rules[0m[0m                                  = (known after apply)
+          [32m+[0m [0m[1m[0mload_balancer_rules[0m[0m                                = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                                               = "ken8887-frontend_ip_configuration"
+          [32m+[0m [0m[1m[0moutbound_rules[0m[0m                                     = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m                                 = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address_allocation[0m[0m                      = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address_version[0m[0m                         = (known after apply)
+          [32m+[0m [0m[1m[0mpublic_ip_address_id[0m[0m                               = (known after apply)
+          [32m+[0m [0m[1m[0mpublic_ip_prefix_id[0m[0m                                = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m                                          = (known after apply)
+        }
+    }
+
+[1m  # module.loadbalancer.azurerm_lb_backend_address_pool.backend_pool[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_lb_backend_address_pool" "backend_pool" {
+      [32m+[0m [0m[1m[0mbackend_ip_configurations[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancing_rules[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mloadbalancer_id[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "ken8887-backend_pool"
+      [32m+[0m [0m[1m[0moutbound_rules[0m[0m            = (known after apply)
+    }
+
+[1m  # module.loadbalancer.azurerm_lb_backend_address_pool_address.lb_paddress_lvm[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_lb_backend_address_pool_address" "lb_paddress_lvm" {
+      [32m+[0m [0m[1m[0mbackend_address_pool_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "lb-paddress-lvm-0"
+      [32m+[0m [0m[1m[0mvirtual_network_id[0m[0m      = (known after apply)
+    }
+
+[1m  # module.loadbalancer.azurerm_lb_backend_address_pool_address.lb_paddress_lvm[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_lb_backend_address_pool_address" "lb_paddress_lvm" {
+      [32m+[0m [0m[1m[0mbackend_address_pool_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "lb-paddress-lvm-1"
+      [32m+[0m [0m[1m[0mvirtual_network_id[0m[0m      = (known after apply)
+    }
+
+[1m  # module.loadbalancer.azurerm_lb_probe.lb_probe[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_lb_probe" "lb_probe" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minterval_in_seconds[0m[0m = 15
+      [32m+[0m [0m[1m[0mload_balancer_rules[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mloadbalancer_id[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                = "TcpProbe"
+      [32m+[0m [0m[1m[0mnumber_of_probes[0m[0m    = 2
+      [32m+[0m [0m[1m[0mport[0m[0m                = 80
+      [32m+[0m [0m[1m[0mprotocol[0m[0m            = "Tcp"
+    }
+
+[1m  # module.loadbalancer.azurerm_lb_rule.lb_rule[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_lb_rule" "lb_rule" {
+      [32m+[0m [0m[1m[0mbackend_address_pool_ids[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mbackend_port[0m[0m                   = 80
+      [32m+[0m [0m[1m[0mdisable_outbound_snat[0m[0m          = false
+      [32m+[0m [0m[1m[0menable_floating_ip[0m[0m             = false
+      [32m+[0m [0m[1m[0mfrontend_ip_configuration_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mfrontend_ip_configuration_name[0m[0m = "ken8887-frontend_ip_configuration"
+      [32m+[0m [0m[1m[0mfrontend_port[0m[0m                  = 80
+      [32m+[0m [0m[1m[0mid[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m        = 4
+      [32m+[0m [0m[1m[0mload_distribution[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mloadbalancer_id[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                           = "LBRule"
+      [32m+[0m [0m[1m[0mprobe_id[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                       = "Tcp"
+    }
+
+[1m  # module.loadbalancer.azurerm_public_ip.lb_pip[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_public_ip" "lb_pip" {
+      [32m+[0m [0m[1m[0mallocation_method[0m[0m       = "Static"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m = 4
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mip_version[0m[0m              = "IPv4"
+      [32m+[0m [0m[1m[0mlocation[0m[0m                = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "ken8887-public-lb-pip"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m     = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msku[0m[0m                     = "Standard"
+      [32m+[0m [0m[1m[0msku_tier[0m[0m                = "Regional"
+    }
+
+[1m  # module.network.azurerm_network_security_group.network-nsg1[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_security_group" "network-nsg1" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m            = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                = "ken8887-network-nsg1"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msecurity_rule[0m[0m       = [
+          [32m+[0m [0m{
+              [32m+[0m [0maccess                                     = "Allow"
+              [32m+[0m [0mdescription                                = ""
+              [32m+[0m [0mdestination_address_prefix                 = "*"
+              [32m+[0m [0mdestination_address_prefixes               = []
+              [32m+[0m [0mdestination_application_security_group_ids = []
+              [32m+[0m [0mdestination_port_range                     = "22"
+              [32m+[0m [0mdestination_port_ranges                    = []
+              [32m+[0m [0mdirection                                  = "Inbound"
+              [32m+[0m [0mname                                       = "rule1"
+              [32m+[0m [0mpriority                                   = 100
+              [32m+[0m [0mprotocol                                   = "Tcp"
+              [32m+[0m [0msource_address_prefix                      = "*"
+              [32m+[0m [0msource_address_prefixes                    = []
+              [32m+[0m [0msource_application_security_group_ids      = []
+              [32m+[0m [0msource_port_range                          = "*"
+              [32m+[0m [0msource_port_ranges                         = []
+            },
+          [32m+[0m [0m{
+              [32m+[0m [0maccess                                     = "Allow"
+              [32m+[0m [0mdescription                                = ""
+              [32m+[0m [0mdestination_address_prefix                 = "*"
+              [32m+[0m [0mdestination_address_prefixes               = []
+              [32m+[0m [0mdestination_application_security_group_ids = []
+              [32m+[0m [0mdestination_port_range                     = "3389"
+              [32m+[0m [0mdestination_port_ranges                    = []
+              [32m+[0m [0mdirection                                  = "Inbound"
+              [32m+[0m [0mname                                       = "rule2"
+              [32m+[0m [0mpriority                                   = 200
+              [32m+[0m [0mprotocol                                   = "Tcp"
+              [32m+[0m [0msource_address_prefix                      = "*"
+              [32m+[0m [0msource_address_prefixes                    = []
+              [32m+[0m [0msource_application_security_group_ids      = []
+              [32m+[0m [0msource_port_range                          = "*"
+              [32m+[0m [0msource_port_ranges                         = []
+            },
+          [32m+[0m [0m{
+              [32m+[0m [0maccess                                     = "Allow"
+              [32m+[0m [0mdescription                                = ""
+              [32m+[0m [0mdestination_address_prefix                 = "*"
+              [32m+[0m [0mdestination_address_prefixes               = []
+              [32m+[0m [0mdestination_application_security_group_ids = []
+              [32m+[0m [0mdestination_port_range                     = "5985"
+              [32m+[0m [0mdestination_port_ranges                    = []
+              [32m+[0m [0mdirection                                  = "Inbound"
+              [32m+[0m [0mname                                       = "rule3"
+              [32m+[0m [0mpriority                                   = 300
+              [32m+[0m [0mprotocol                                   = "Tcp"
+              [32m+[0m [0msource_address_prefix                      = "*"
+              [32m+[0m [0msource_address_prefixes                    = []
+              [32m+[0m [0msource_application_security_group_ids      = []
+              [32m+[0m [0msource_port_range                          = "*"
+              [32m+[0m [0msource_port_ranges                         = []
+            },
+        ]
+    }
+
+[1m  # module.network.azurerm_subnet.network-subnet1[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_subnet" "network-subnet1" {
+      [32m+[0m [0m[1m[0maddress_prefixes[0m[0m                               = [
+          [32m+[0m [0m"10.0.0.0/24",
+        ]
+      [32m+[0m [0m[1m[0menforce_private_link_endpoint_network_policies[0m[0m = false
+      [32m+[0m [0m[1m[0menforce_private_link_service_network_policies[0m[0m  = false
+      [32m+[0m [0m[1m[0mid[0m[0m                                             = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                                           = "ken8887-network-subnet1"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m                            = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mvirtual_network_name[0m[0m                           = "ken8887-network-vnet"
+    }
+
+[1m  # module.network.azurerm_subnet_network_security_group_association.network-subnet1-nsg1[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_subnet_network_security_group_association" "network-subnet1-nsg1" {
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m                 = (known after apply)
+    }
+
+[1m  # module.network.azurerm_virtual_network.network-vnet[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_virtual_network" "network-vnet" {
+      [32m+[0m [0m[1m[0maddress_space[0m[0m       = [
+          [32m+[0m [0m"10.0.0.0/16",
+        ]
+      [32m+[0m [0m[1m[0mdns_servers[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mguid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m            = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                = "ken8887-network-vnet"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msubnet[0m[0m              = (known after apply)
+    }
+
+[1m  # module.rgroup.azurerm_resource_group.rg1[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_resource_group" "rg1" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m     = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mtags[0m[0m     = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+    }
+
+[1m  # module.windows.azurerm_availability_set.wvm_as1[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_availability_set" "wvm_as1" {
+      [32m+[0m [0m[1m[0mid[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                     = "canadaeast"
+      [32m+[0m [0m[1m[0mmanaged[0m[0m                      = true
+      [32m+[0m [0m[1m[0mname[0m[0m                         = "ken8887-wvm-as1"
+      [32m+[0m [0m[1m[0mplatform_fault_domain_count[0m[0m  = 2
+      [32m+[0m [0m[1m[0mplatform_update_domain_count[0m[0m = 5
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m          = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mtags[0m[0m                         = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+    }
+
+[1m  # module.windows.azurerm_network_interface.wvm_nic1["ken8887-w-vm1"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_network_interface" "wvm_nic1" {
+      [32m+[0m [0m[1m[0mapplied_dns_servers[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdns_servers[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0menable_accelerated_networking[0m[0m = false
+      [32m+[0m [0m[1m[0menable_ip_forwarding[0m[0m          = false
+      [32m+[0m [0m[1m[0mid[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0minternal_dns_name_label[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0minternal_domain_name_suffix[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                      = "canadaeast"
+      [32m+[0m [0m[1m[0mmac_address[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                          = "ken8887-w-vm1-nic1"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m           = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0mtags[0m[0m                          = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m            = (known after apply)
+
+      [32m+[0m [0mip_configuration {
+          [32m+[0m [0m[1m[0mgateway_load_balancer_frontend_ip_configuration_id[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mname[0m[0m                                               = "ken8887-w-vm1-ipconfig1"
+          [32m+[0m [0m[1m[0mprimary[0m[0m                                            = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m                                 = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ip_address_allocation[0m[0m                      = "Dynamic"
+          [32m+[0m [0m[1m[0mprivate_ip_address_version[0m[0m                         = "IPv4"
+          [32m+[0m [0m[1m[0mpublic_ip_address_id[0m[0m                               = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m                                          = (known after apply)
+        }
+    }
+
+[1m  # module.windows.azurerm_public_ip.wvm_pip["ken8887-w-vm1"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_public_ip" "wvm_pip" {
+      [32m+[0m [0m[1m[0mallocation_method[0m[0m       = "Dynamic"
+      [32m+[0m [0m[1m[0mdomain_name_label[0m[0m       = "ken8887-w-vm1"
+      [32m+[0m [0m[1m[0mfqdn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout_in_minutes[0m[0m = 4
+      [32m+[0m [0m[1m[0mip_address[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mip_version[0m[0m              = "IPv4"
+      [32m+[0m [0m[1m[0mlocation[0m[0m                = "canadaeast"
+      [32m+[0m [0m[1m[0mname[0m[0m                    = "ken8887-w-vm1-pip"
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m     = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msku[0m[0m                     = "Basic"
+      [32m+[0m [0m[1m[0msku_tier[0m[0m                = "Regional"
+      [32m+[0m [0m[1m[0mtags[0m[0m                    = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+    }
+
+[1m  # module.windows.azurerm_windows_virtual_machine.wvm["ken8887-w-vm1"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "azurerm_windows_virtual_machine" "wvm" {
+      [32m+[0m [0m[1m[0madmin_password[0m[0m             = (sensitive value)
+      [32m+[0m [0m[1m[0madmin_username[0m[0m             = "adminuser"
+      [32m+[0m [0m[1m[0mallow_extension_operations[0m[0m = true
+      [32m+[0m [0m[1m[0mavailability_set_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mcomputer_name[0m[0m              = "ken8887-w-vm1"
+      [32m+[0m [0m[1m[0menable_automatic_updates[0m[0m   = true
+      [32m+[0m [0m[1m[0mextensions_time_budget[0m[0m     = "PT1H30M"
+      [32m+[0m [0m[1m[0mhotpatching_enabled[0m[0m        = false
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mlocation[0m[0m                   = "canadaeast"
+      [32m+[0m [0m[1m[0mmax_bid_price[0m[0m              = -1
+      [32m+[0m [0m[1m[0mname[0m[0m                       = "ken8887-w-vm1"
+      [32m+[0m [0m[1m[0mnetwork_interface_ids[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mpatch_mode[0m[0m                 = "AutomaticByOS"
+      [32m+[0m [0m[1m[0mplatform_fault_domain[0m[0m      = -1
+      [32m+[0m [0m[1m[0mpriority[0m[0m                   = "Regular"
+      [32m+[0m [0m[1m[0mprivate_ip_address[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip_addresses[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mprovision_vm_agent[0m[0m         = true
+      [32m+[0m [0m[1m[0mpublic_ip_address[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip_addresses[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mresource_group_name[0m[0m        = "ken8887-assignment1-RG"
+      [32m+[0m [0m[1m[0msize[0m[0m                       = "Standard_B1s"
+      [32m+[0m [0m[1m[0mtags[0m[0m                       = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0m[1m[0mvirtual_machine_id[0m[0m         = (known after apply)
+
+      [32m+[0m [0mboot_diagnostics {
+          [32m+[0m [0m[1m[0mstorage_account_uri[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mos_disk {
+          [32m+[0m [0m[1m[0mcaching[0m[0m                   = "ReadWrite"
+          [32m+[0m [0m[1m[0mdisk_size_gb[0m[0m              = 128
+          [32m+[0m [0m[1m[0mname[0m[0m                      = "ken8887-w-vm1-os-disk"
+          [32m+[0m [0m[1m[0mstorage_account_type[0m[0m      = "Premium_LRS"
+          [32m+[0m [0m[1m[0mwrite_accelerator_enabled[0m[0m = false
+        }
+
+      [32m+[0m [0msource_image_reference {
+          [32m+[0m [0m[1m[0moffer[0m[0m     = "WindowsServer"
+          [32m+[0m [0m[1m[0mpublisher[0m[0m = "MicrosoftWindowsServer"
+          [32m+[0m [0m[1m[0msku[0m[0m       = "2016-Datacenter"
+          [32m+[0m [0m[1m[0mversion[0m[0m   = "latest"
+        }
+
+      [32m+[0m [0mtermination_notification {
+          [32m+[0m [0m[1m[0menabled[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtimeout[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mwinrm_listener {
+          [32m+[0m [0m[1m[0mprotocol[0m[0m = "Http"
+        }
+    }
+
+[0m[1mPlan:[0m 37 to add, 0 to change, 0 to destroy.
+[0m[0m
+[1mChanges to Outputs:[0m[0m
+  [32m+[0m [0m[1m[0mlb_names[0m[0m                      = "ken8887-public-lb"
+  [32m+[0m [0m[1m[0mlvm_availability_set[0m[0m          = {
+      [32m+[0m [0mid                           = (known after apply)
+      [32m+[0m [0mlocation                     = "canadaeast"
+      [32m+[0m [0mmanaged                      = true
+      [32m+[0m [0mname                         = "ken8887-lvm-as1"
+      [32m+[0m [0mplatform_fault_domain_count  = 2
+      [32m+[0m [0mplatform_update_domain_count = 5
+      [32m+[0m [0mproximity_placement_group_id = [90mnull[0m[0m
+      [32m+[0m [0mresource_group_name          = "ken8887-assignment1-RG"
+      [32m+[0m [0mtags                         = {
+          [32m+[0m [0m"Environment"    = "Lab"
+          [32m+[0m [0m"ExpirationDate" = "2023-06-30"
+          [32m+[0m [0m"Name"           = "kennedy.yau"
+          [32m+[0m [0m"Project"        = "Automation Project – Assignment 1"
+        }
+      [32m+[0m [0mtimeouts                     = [90mnull[0m[0m
+    }
+  [32m+[0m [0m[1m[0mlvm_fqdns[0m[0m                     = [
+      [32m+[0m [0m(known after apply),
+      [32m+[0m [0m(known after apply),
+    ]
+  [32m+[0m [0m[1m[0mlvm_hostnames[0m[0m                 = [
+      [32m+[0m [0m"ken8887-c-vm0",
+      [32m+[0m [0m"ken8887-c-vm1",
+    ]
+  [32m+[0m [0m[1m[0mlvm_ids[0m[0m                       = [
+      [32m+[0m [0m(known after apply),
+      [32m+[0m [0m(known after apply),
+    ]
+  [32m+[0m [0m[1m[0mlvm_private_ips[0m[0m               = [
+      [32m+[0m [0m(known after apply),
+      [32m+[0m [0m(known after apply),
+    ]
+  [32m+[0m [0m[1m[0mlvm_public_ips[0m[0m                = [
+      [32m+[0m [0m(known after apply),
+      [32m+[0m [0m(known after apply),
+    ]
+  [32m+[0m [0m[1m[0mmd_names[0m[0m                      = [
+      [32m+[0m [0m"ken8887-c-vm0-vm-disk0",
+      [32m+[0m [0m"ken8887-c-vm1-vm-disk0",
+      [32m+[0m [0m"ken8887-w-vm1-vm-disk0",
+    ]
+  [32m+[0m [0m[1m[0mnetwork_security_group1_name[0m[0m  = "ken8887-network-nsg1"
+  [32m+[0m [0m[1m[0mpg_db_name[0m[0m                    = "ken8887-db"
+  [32m+[0m [0m[1m[0mrg_name[0m[0m                       = "ken8887-assignment1-RG"
+  [32m+[0m [0m[1m[0msubnet1_address_space[0m[0m         = [
+      [32m+[0m [0m"10.0.0.0/24",
+    ]
+  [32m+[0m [0m[1m[0msubnet1_name[0m[0m                  = "ken8887-network-subnet1"
+  [32m+[0m [0m[1m[0mvirtual_network_address_space[0m[0m = [
+      [32m+[0m [0m"10.0.0.0/16",
+    ]
+  [32m+[0m [0m[1m[0mvirtual_network_name[0m[0m          = "ken8887-network-vnet"
+  [32m+[0m [0m[1m[0mwvm_availability_set_name[0m[0m     = "ken8887-wvm-as1"
+  [32m+[0m [0m[1m[0mwvm_dns_label[0m[0m                 = [
+      [32m+[0m [0m"ken8887-w-vm1",
+    ]
+  [32m+[0m [0m[1m[0mwvm_fqdn[0m[0m                      = [
+      [32m+[0m [0m(known after apply),
+    ]
+  [32m+[0m [0m[1m[0mwvm_hostnames[0m[0m                 = [
+      [32m+[0m [0m"ken8887-w-vm1",
+    ]
+  [32m+[0m [0m[1m[0mwvm_ids[0m[0m                       = [
+      [32m+[0m [0m(known after apply),
+    ]
+  [32m+[0m [0m[1m[0mwvm_private_ips[0m[0m               = [
+      [32m+[0m [0m(known after apply),
+    ]
+  [32m+[0m [0m[1m[0mwvm_public_ips[0m[0m                = [
+      [32m+[0m [0m(known after apply),
+    ]
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

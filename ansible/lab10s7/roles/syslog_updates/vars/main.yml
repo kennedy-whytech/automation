@@ -1,0 +1,3 @@
+rsyslogd_permission:  0640
+varlog_permission:  0775
+filecreation_mode:  0640

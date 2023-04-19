@@ -1,0 +1,24 @@
+---
+- name: Perform operations on /etc/profile
+  block:
+    - name: Add TMOUT line using blockinfile
+      blockinfile:
+        path: /etc/profile
+        block: |
+          export TMOUT={{tmout_sec}}
+        marker: "# {mark} Timeout block added by Ansible"
+    
+    - name: Replace umask using lineinfile
+      lineinfile:
+        path: /etc/profile
+        regexp: '^umask.*'
+        line: 'umask {{umask_permission}}' # to restrict not to read/write/execute by groups/others
+  rescue:
+    - name: Add umask to ~/.bash_profile if block fails
+      lineinfile:
+        path: "~/.bash_profile"
+        line: "umask {{umask_permisssion_fail}}" # to restrict not to read/write by groups/others
+  always:
+    - name: Display execution completion message
+      debug:
+        msg: "Playbook execution completed."

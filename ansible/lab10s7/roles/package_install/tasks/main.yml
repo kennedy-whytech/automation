@@ -1,0 +1,7 @@
+---
+- name: Install packages for CentOS or RedHat
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages_to_install }}"
+  when: ansible_distribution in ['CentOS', 'RedHat']

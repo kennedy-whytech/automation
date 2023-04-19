@@ -1,0 +1,4 @@
+---
+- name: reboot_handler
+  reboot:
+    msg: "Rebooting after patching"

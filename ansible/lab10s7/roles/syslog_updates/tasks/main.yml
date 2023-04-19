@@ -1,0 +1,22 @@
+---
+- name: Insert a block of text in /etc/rsyslog.conf
+  blockinfile:
+    path: /etc/rsyslog.conf
+    block: |
+      $FileCreateMode {{  filecreation_mode }}
+    marker: "# {mark} Syslog block added by Ansible"
+
+- name: Set ownership and permissions on /etc/rsyslog.d directory recursively
+  file:
+    path: /etc/rsyslog.d
+    owner: root
+    group: root
+    mode: "{{ rsyslogd_permission }}"
+    recurse: yes
+  notify: restart_rsyslog
+
+- name: Set permissions on /var/log directory
+  file:
+    path: /var/log
+    mode: "{{ varlog_permission }}"
+
