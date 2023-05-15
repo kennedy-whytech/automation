@@ -1,5 +1,5 @@
 # automation
-The objective of the repo is to record my learning progress in automation(Azure) and project 2 is a more integrated and complete project. Feel free to play around with it~
+The objective of the repo is to record my learning progress in automation on Azure with Terraform and Ansible. Project 2 is a more integrated and complete project. Feel free to play around with it~
 
 ## Terraform
 ### Initialize Terraform to download plug-ins as required 
